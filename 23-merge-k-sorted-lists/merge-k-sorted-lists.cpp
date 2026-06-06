@@ -10,39 +10,24 @@
  */
 class Solution {
 public:
-    ListNode* mergetwo(ListNode* a,ListNode *b)
-    {
-        if(!a) return b;
-        if(!b) return a;
-        if(a->val<b->val)
-        {
-            a->next=mergetwo(a->next,b);
-            return a;
+    struct compare{
+        bool operator()(ListNode* a,ListNode* b){
+            return a->val>b->val;
         }
-        else
-        {
-            b->next=mergetwo(a,b->next);
-            return b;
-        }
-    }
+    };
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        if(lists.empty()) return NULL;
-        while(lists.size()>1)
+        priority_queue<ListNode*,vector<ListNode*>,compare> pq;
+        for(int i=0;i<lists.size();i++) if(lists[i]!=NULL) pq.push(lists[i]);
+        ListNode dummy(0);
+        ListNode* tail=&dummy;
+        while(!pq.empty())
         {
-            vector<ListNode*> temp;
-            for(int i=0;i<lists.size();i+=2)
-            {
-                if(i+1<lists.size())
-                {
-                    temp.push_back(mergetwo(lists[i],lists[i+1]));
-                }
-                else
-                {
-                    temp.push_back(lists[i]);
-                }
-            }
-            lists=temp;
+            ListNode* node=pq.top();
+            pq.pop();
+            tail->next=node;
+            tail=tail->next;
+            if(node->next!=NULL) pq.push(node->next);
         }
-        return lists[0];
+        return dummy.next;
     }
 };
