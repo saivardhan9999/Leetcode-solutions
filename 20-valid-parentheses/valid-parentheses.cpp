@@ -8,9 +8,9 @@ public:
             else
             {
                 if(st.empty()) return false;
-                char t=st.top();
+                char t = st.top();
                 st.pop();
-                if(c==')' && t!='(' || c=='}' && t!='{' || c==']' && t!='[') return false;
+                if(t=='(' && c!=')' || t=='{' && c!='}' || t=='[' && c!=']') return false;
             }
         }
         return st.empty();
