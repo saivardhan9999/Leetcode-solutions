@@ -5,7 +5,7 @@ public:
         int best=nums[0],currmax=nums[0];
         for(int i=1;i<n;i++)
         {
-            currmax=max(nums[i],currmax+nums[i]);
+            currmax=max(currmax+nums[i],nums[i]);
             best=max(best,currmax);
         }
         return best;
