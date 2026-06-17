@@ -9,9 +9,9 @@ public:
             mp[key].push_back(word);
         }
         vector<vector<string>> res;
-        for(auto x : mp)
+        for(auto it : mp)
         {
-            res.push_back(x.second);
+            res.push_back(it.second);
         }
         return res;
     }
