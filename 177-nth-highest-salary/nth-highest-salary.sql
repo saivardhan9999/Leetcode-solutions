@@ -3,8 +3,7 @@ BEGIN
   set n=n-1;
   RETURN (
       # Write your MySQL query statement below.
-      select
-      (
+      select(
         select distinct salary
         from employee
         order by salary desc
