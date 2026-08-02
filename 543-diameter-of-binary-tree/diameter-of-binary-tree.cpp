@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    int diameter=0;
+        int diameter=0;
         int height(TreeNode* root)
         {
             if(root==NULL) return 0;
