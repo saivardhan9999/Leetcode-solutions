@@ -2,11 +2,11 @@ class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         unordered_map<string,vector<string>> mp;
-        for(string word : strs)
+        for(int i=0;i<strs.size();i++)
         {
-            string key=word;
-            sort(key.begin(),key.end());
-            mp[key].push_back(word);
+            string word=strs[i];
+            sort(strs[i].begin(),strs[i].end());
+            mp[strs[i]].push_back(word);
         }
         vector<vector<string>> res;
         for(auto it : mp)
