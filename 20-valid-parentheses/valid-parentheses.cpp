@@ -4,13 +4,13 @@ public:
         stack<char> st;
         for(char c : s)
         {
-            if(c=='(' || c=='{' || c=='[') st.push(c);
+            if(c=='(' || c=='[' || c=='{') st.push(c);
             else
             {
                 if(st.empty()) return false;
-                char t = st.top();
+                char t=st.top();
                 st.pop();
-                if(t=='(' && c!=')' || t=='{' && c!='}' || t=='[' && c!=']') return false;
+                if(c==')' && t!='(' || c==']' && t!='[' || c=='}' && t!='{') return false;
             }
         }
         return st.empty();
