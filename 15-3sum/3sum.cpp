@@ -11,14 +11,15 @@ public:
             while(l<r)
             {
                 int sum=nums[i]+nums[l]+nums[r];
-                if(sum>0) r--;
-                else if(sum<0) l++;
+                if(sum<0) l++;
+                else if(sum>0) r--;
                 else
                 {
                     res.push_back({nums[i],nums[l],nums[r]});
                     while(l<r && nums[l]==nums[l+1]) l++;
                     while(l<r && nums[r]==nums[r-1]) r--;
-                    l++;r--;
+                    l++;
+                    r--;
                 }
             }
         }
