@@ -1,9 +1,9 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        map<char,int> mp;
+        unordered_map<char,int> mp;
+        int maxlen=0,left=0;
         int n=s.length();
-        int left=0,maxlen=0;
         for(int right=0;right<n;right++)
         {
             if(mp.count(s[right]) && mp[s[right]]>=left)
